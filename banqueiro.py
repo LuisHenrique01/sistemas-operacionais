@@ -1,5 +1,4 @@
 import os
-import time
 
 def main():
     qtd_processos = int(input('Quantidade de processos: '))
@@ -32,6 +31,7 @@ def main():
         mostrar_dados(matriz_demanda, recursos_max, matriz_alocados, matriz_necessidades, recursos_disponiveis)
         finalizar_processo(processo_escolhido, matriz_alocados, recursos_disponiveis)
         mostrar_dados(matriz_demanda, recursos_max, matriz_alocados, matriz_necessidades, recursos_disponiveis)
+        os.system('cls' if os.name == 'nt' else 'clear')
         necessidades_faltando = sum([sum(linha) for linha in matriz_necessidades])
     print('TODOS OS PROCESSOS FORAM EXECUTADOS!\n')
     mostrar_dados(matriz_demanda, recursos_max, matriz_alocados, matriz_necessidades, recursos_disponiveis)
@@ -87,7 +87,7 @@ def ler_alocao_processo(qtd_recursos, i):
     
     
 def ler_demanda_processo(qtd_recursos, i):
-    p = list(map(int, input(f'Demanda de recursos do processo P{i+1}: ').split()))
+    p = list(map(int, input(f'Demanda máxima de recursos do processo P{i+1}: ').split()))
     if len(p) == qtd_recursos:
         return p
     else:
@@ -141,7 +141,7 @@ def mostrar_dados(matriz_demanda, recursos_max, matriz_alocados, matriz_necessid
     print_matriz(matriz_necessidades, 'necessidades')
     print_vetor(recursos_disponiveis, 'recursos disponíveis')
     input('pressione Enter para continuar')
-    os.system('cls' if os.name == 'nt' else 'clear')
+    
     
 if __name__ == "__main__":
     main()
